@@ -1,4 +1,5 @@
 
+import time
 
 def part1(filename):
     checksum = 0
@@ -30,7 +31,7 @@ def part1(filename):
                     position += 1
                     rear_counter += 1
             i += 1
-        
+
         # still gotta check and finish moving the last file
         last_file_size = int(line[j])
         while rear_counter < last_file_size:
@@ -100,5 +101,10 @@ def part2(filename):
 if __name__ == "__main__":
     filename = "example.txt"
     filename = "input.txt"
+    t0 = time.time_ns()
     part1(filename)
+    t1 = time.time_ns()
     part2(filename)
+    t2 = time.time_ns()
+
+    print(f"Part 1: {(t1-t0)/1e9} s\nPart 2: {(t2-t1)/1e9} s")
