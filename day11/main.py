@@ -3,15 +3,15 @@ import time
 from functools import cache
 
 @cache
-def recurseStone(value: int, it: int):
+def recurseStone(value: int, it: int) -> int:
     if it <= 0:
         return 1
 
     if value == 0:
         result = recurseStone(1, it-1)
-    elif (ndigits := len(str(value))) % 2 == 0:
-        leftValue, rightValue = int(str(value)[:ndigits//2]), int(str(value)[ndigits//2:])
-
+    elif (ndigits := len("%i" % value)) % 2 == 0:
+        pow10 = 10 ** (ndigits//2)
+        leftValue, rightValue = value // pow10 , value % pow10
         result = recurseStone(leftValue, it-1) + recurseStone(rightValue, it-1)
     else:
         result = recurseStone(value*2024, it-1)
