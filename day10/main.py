@@ -1,4 +1,5 @@
 
+import time
 
 def climb(hmap, i: int, j: int):
     value = hmap[i][j]
@@ -63,13 +64,12 @@ def part12(filename):
     print(score)
     print(rating)
 
-def part2(filename):
-    pass
-
-
 if __name__ == "__main__":
     filename = "example_small.txt"
     filename = "example_large.txt"
     filename = "input.txt"
 
+    t0 = time.perf_counter_ns()
     part12(filename)
+    t1 = time.perf_counter_ns()
+    print(f"{(t1-t0)/1e9} s")
